@@ -35,7 +35,7 @@ func executeFetch(endpoint string) {
 	case "station":
 		translator.FetchStation()
 	case "traffic":
-		translator.FetchStation()
+		translator.FetchTraffic()
 	case "weather":
 		translator.FetchWeather()
 	default:
