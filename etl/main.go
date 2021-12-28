@@ -39,6 +39,6 @@ func executeFetch(endpoint string) {
 	case "weather":
 		translator.FetchWeather()
 	default:
-		fmt.Printf("Invalid Argument: %s", endpoint)
+		fmt.Printf("Invalid Argument: %s\n", endpoint)
 	}
 }

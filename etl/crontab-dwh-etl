@@ -1,2 +1,2 @@
-*/10 * * * * etl parking station weather >/dev/null 2>&1
-*/14 * * * * etl traffic >/dev/null 2>&1
+*/10 * * * * bash -c 'cd dwh && ./etl parking station weather' >> dwh/output.log 2>&1
+*/14 * * * * bash -c 'cd dwh && ./etl traffic' >> dwh/output.log 2>&1
