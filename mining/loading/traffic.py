@@ -11,9 +11,8 @@ abbreviations = {
 }
 
 
-def getTrafficDataFrame() -> pd.DataFrame:
-    all_files = glob.glob(os.path.join(os.path.dirname(__file__),
-                                       f'{pathToData}/traffic/*.csv'))
+def getTrafficDataFrame(pathToData) -> pd.DataFrame:
+    all_files = glob.glob(f'{pathToData}/traffic/*.csv')
     csvs = []
 
     for filename in all_files:

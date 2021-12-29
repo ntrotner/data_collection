@@ -4,8 +4,7 @@ import os
 
 
 def getParkingDataFrame(pathToData) -> pd.DataFrame:
-    all_files = glob.glob(os.path.join(os.path.dirname(__file__),
-                                       f'{pathToData}/parking/*.csv'))
+    all_files = glob.glob(f'{pathToData}/parking/*.csv')
     csvs = []
 
     for filename in all_files:
