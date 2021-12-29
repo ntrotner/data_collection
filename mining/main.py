@@ -4,8 +4,8 @@ from processing.parkingtraffic import correlate_tp
 from processing.plot_parking import plot_parking
 from processing.plot_traffic import plot_traffic
 
-parking = getParkingDataFrame()
-traffic = getTrafficDataFrame()
+parking = getParkingDataFrame('../etl/data')
+traffic = getTrafficDataFrame('../etl/data')
 
 correlate_tp(parking, traffic)
 
