@@ -1,0 +1,3 @@
+*/10 * * * * bash -c 'cd dwh && ./data_collection parking station weather' >> dwh/output.log 2>&1
+*/16 * * * * bash -c 'cd dwh && ./data_collection traffic' >> dwh/output.log 2>&1
+*/30 * * * * bash -c 'cd dwh && ./start' >> dwh/output.log 2>&1
