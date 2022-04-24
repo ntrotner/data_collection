@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: go build -v ./etl/...
  
-   release-linux-amd64:
+  release-linux-amd64:
     name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
