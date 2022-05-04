@@ -10,3 +10,5 @@ def plot_traffic(traffic):
                       y=traffic[i], mode="lines", name=i))
     fig.update_layout(margin=dict(l=5, r=5, t=35, b=5))
     fig.write_html("./resources/traffic.html")
+    fig.update_layout(height=1080, width=1920)
+    fig.write_image("./resources/traffic.png")

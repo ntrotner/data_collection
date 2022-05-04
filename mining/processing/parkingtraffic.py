@@ -5,7 +5,6 @@ import plotly.graph_objects as go
 
 def correlate_tp(parking, traffic):
     combined = parking.join(traffic, how='outer').fillna(0)
-    print(combined)
 
     corr = combined.replace([numpy.inf, -numpy.inf], numpy.nan).fillna(
         0).corr()[parking.columns].loc[traffic.columns.tolist(), :].fillna(0)
@@ -15,13 +14,12 @@ def correlate_tp(parking, traffic):
         0).corr()[parking.columns].loc[traffic.columns.tolist(), :].fillna(0)
 
     fig = make_subplots(rows=2, cols=1, subplot_titles=(
-        "Absolute Values", "Changes in Percent"), shared_xaxes=True, vertical_spacing=0.05)
+        "Absolute Values", "Changes in Percent"), shared_xaxes=True, vertical_spacing=0.15)
 
     fig.add_trace(go.Heatmap(x=parking.columns, y=traffic.columns,
-                  z=corr, texttemplate="%{text}"), row=1, col=1)
+                  z=corr, texttemplate="%{text}", colorbar=dict(y=.75,len=.5)), row=1, col=1)
     fig.add_trace(go.Heatmap(x=parking.columns, y=traffic.columns,
-                  z=corr_pct, texttemplate="%{text}"), row=2, col=1)
-    fig.update_layout(
-        margin=dict(l=5, r=5, t=35, b=5)
-    )
+                  z=corr_pct, texttemplate="%{text}", colorbar=dict(y=.25,len=.5)), row=2, col=1)
+
     fig.write_html("./resources/correlation_tp.html")
+    fig.write_image("./resources/correlation_tp.png")

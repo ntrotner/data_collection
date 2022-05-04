@@ -22,5 +22,8 @@ def getTrafficDataFrame(pathToData) -> pd.DataFrame:
     frame = pd.concat(csvs, axis=0, ignore_index=True)
     frame['date'] = pd.to_datetime(frame['date'])
     frame["id"] = frame["id"].map(abbreviations)
+    
+    frame = frame.set_index('date')
+    frame.index = pd.to_datetime(frame.index, utc=True)
 
-    return frame[["date", "id", "durationInTraffic"]].set_index('date').groupby('id').resample("15T").mean().reset_index().pivot(index="date", columns=["id"], values="durationInTraffic")
+    return frame[["id", "durationInTraffic"]].groupby('id').resample("15T").mean().reset_index().pivot(index="date", columns=["id"], values="durationInTraffic")

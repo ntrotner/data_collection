@@ -21,4 +21,6 @@ def getParkingDataFrame(pathToData) -> pd.DataFrame:
 
     frame["identifier"] = frame["identifier"].map(names)
     frame['date'] = pd.to_datetime(frame['date'])
-    return frame.set_index('date').groupby('identifier').resample("15T").mean().reset_index().pivot(index="date", columns=["identifier"], values="free_slots")
+    frame = frame.set_index('date')
+    frame.index = pd.to_datetime(frame.index, utc=True)
+    return frame.groupby('identifier').resample("15T").mean().reset_index().pivot(index="date", columns=["identifier"], values="free_slots")
